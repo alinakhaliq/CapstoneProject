@@ -113,10 +113,14 @@ workflows:
 #          cluster-name: capstone-project
 #          requires:
 #            - docker-push
+      - deploy-application:
+          requires:
+            - docker-push
       - test-cluster:
           cluster-name: capstone-project
           requires:
-            - aws-eks/create-cluster
+#            - aws-eks/create-cluster
+            - deploy-application
 #      - aws-eks/delete-cluster:
 #          cluster-name: my-eks-demo
 #          requires:
