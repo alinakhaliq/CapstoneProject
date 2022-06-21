@@ -66,6 +66,7 @@ jobs:
       - kubernetes/create-or-update-resource:
           get-rollout-status: true
           resource-file-path: deployments/deployment.yml
+          resource-name: deployments/capstone-project
 
   test-cluster:
     docker:
