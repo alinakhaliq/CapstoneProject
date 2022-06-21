@@ -71,7 +71,10 @@ workflows:
   deployment:
     jobs:
       - run-lint
-      - build-docker-image
+      - docker-build
+      - docker-push
+          requires:
+            - "docker-build"
 #      - aws-eks/create-cluster:
 #          cluster-name: my-eks-demo
 #      - test-cluster:
