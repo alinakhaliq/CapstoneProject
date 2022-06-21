@@ -48,7 +48,7 @@ jobs:
             docker build -t capstone/$IMAGE_NAME .
             docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD 
             docker push capstone/$IMAGE_NAME
-
+            
   test-cluster:
     docker:
       - image: 'cimg/python:3.10'
