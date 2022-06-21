@@ -65,7 +65,7 @@ jobs:
           install-kubectl: true
       - kubernetes/create-or-update-resource:
           get-rollout-status: true
-          resource-file-path: CapstoneProjet/deployments/deployment.yaml
+          resource-file-path: deployments/deployment.yml
 
   test-cluster:
     docker:
