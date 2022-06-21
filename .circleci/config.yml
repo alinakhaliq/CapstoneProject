@@ -56,31 +56,16 @@ jobs:
         description: |
           Name of the EKS cluster
         type: string
-      docker-image-name:
-        description: |
-          Name of the docker image to be deployed
-        type: string
-      version-info:
-        description: |
-          App version information
-        type: string
-      aws-region:
-        description: |
-          AWS region
-        type: string
-        default: "us-east-1"
     steps:
       - checkout
+      - kubernetes/install
       - aws-eks/update-kubeconfig-with-authenticator:
           cluster-name: << parameters.cluster-name >>
           install-kubectl: true
-          aws-region: << parameters.aws-region >>
       - kubernetes/create-or-update-resource:
-          resource-file-path: "deployments/deployment.yml"
-          get-rollout-status: true
-          resource-name: deployment/capstone
-      - kubernetes/create-or-update-resource:
-          resource-file-path: "deployments/deployment.yml"
+          get-rollout-status: false
+          resource-file-path: deployments/deployment.yaml
+          resource-name: deployments/capstone-project
 
   test-cluster:
     docker:
@@ -98,6 +83,11 @@ jobs:
       - run:
           command: |
             kubectl get services
+            kubectl get pods
+            kubectl describe pods
+            kubectl get nodes
+            kubectl get deployment
+            kubectl get services -o wide
           name: Test cluster
 
 workflows:
