@@ -90,7 +90,7 @@ jobs:
             kubectl get deployment
             kubectl get services -o wide
           name: Test cluster
-          
+             
 workflows:
   deployment:
     jobs:
