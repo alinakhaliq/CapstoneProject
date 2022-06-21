@@ -50,8 +50,7 @@ jobs:
             docker push project4alina/$IMAGE_NAME
 
   deploy-application:
-    docker:
-      - image: 'cimg/python:3.10'  
+    executor: aws-eks/python3
     parameters:
       cluster-name:
         description: |
