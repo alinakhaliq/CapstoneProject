@@ -31,8 +31,7 @@ jobs:
       - run:
           name: Build Docker Image
           command: |
-            export IMAGE_NAME=capstone-project
-            docker build -t capstone/$IMAGE_NAME .
+            docker build --tag=capstone-project .
 
   docker-push:
     docker:
@@ -44,11 +43,12 @@ jobs:
       - run:
           name: Push Docker Image to Docker Hub
           command: |
-            export IMAGE_NAME=capstone-project
-            docker build -t capstone/$IMAGE_NAME .
+            dockerpath=project4alina/capstone-project
+            echo "Docker ID and Image: $dockerpath"
             docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD 
-            docker push capstone/$IMAGE_NAME
-            
+            docker tag capstone-project $dockerpath:latest
+            docker push $dockerpath:latest
+
   test-cluster:
     docker:
       - image: 'cimg/python:3.10'
