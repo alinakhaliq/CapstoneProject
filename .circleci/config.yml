@@ -72,7 +72,7 @@ workflows:
     jobs:
       - run-lint
       - docker-build
-      - docker-push
+      - docker-push:
           requires:
             - "docker-build"
 #      - aws-eks/create-cluster:
