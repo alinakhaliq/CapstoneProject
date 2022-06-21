@@ -44,11 +44,10 @@ jobs:
       - run:
           name: Push Docker Image to Docker Hub
           command: |
-            dockerpath=project4alina/capstone-project
-            echo "Docker ID and Image: $dockerpath"
+            export IMAGE_NAME=capstone-project
+            docker build -t project4alina/$IMAGE_NAME .
             docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD 
-            docker tag capstone-project $dockerpath:latest
-            docker push $dockerpath:latest
+            docker push project4alina/$IMAGE_NAME
 
   test-cluster:
     docker:
