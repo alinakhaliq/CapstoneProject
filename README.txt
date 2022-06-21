@@ -1,6 +1,6 @@
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/alinakhaliq/CapstoneProject/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/alinakhaliq/CapstoneProject/tree/main)
 
-Github Repo Link: https://github.com/alinakhaliq/Project4
+Github Repo Link: https://github.com/alinakhaliq/CapstoneProject
 
 In this project I have used CircleCI to implement CI/CD
 I have:
