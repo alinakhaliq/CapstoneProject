@@ -19,20 +19,20 @@ jobs:
           command: |
             hadolint Dockerfile
 
-    build-docker-image:
-      docker:
-        - image: circleci/node:13.8.0
-      steps:
-        - checkout
+  build-docker-image:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - checkout
 
-        - setup_remote_docker:
-            version: 19.03.13
+      - setup_remote_docker:
+          version: 19.03.13
 
-        - run:
-            name: Build Docker Image
-            command: |
-              export IMAGE_NAME=capstone-project
-              docker build -t project4alina/$IMAGE_NAME .
+      - run:
+          name: Build Docker Image
+          command: |
+            export IMAGE_NAME=capstone-project
+            docker build -t project4alina/$IMAGE_NAME .
 
   test-cluster:
     docker:
