@@ -1,4 +1,4 @@
-FROM nginx:latest-alpine
+FROM 
 
 RUN rm /usr/share/nginx/html/index.html
 
