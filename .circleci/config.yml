@@ -104,8 +104,6 @@ workflows:
 #            - docker-push
       - deploy-application:
           cluster-name: capstone-project
-          requires:
-            - docker-push
       - test-cluster:
           cluster-name: capstone-project
           requires:
