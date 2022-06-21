@@ -50,7 +50,8 @@ jobs:
             docker push project4alina/$IMAGE_NAME
 
   deploy-application:
-    executor: aws-eks/python3
+    docker:
+      - image: 'cimg/python:3.10'
     parameters:
       cluster-name:
         description: |
@@ -63,7 +64,7 @@ jobs:
           cluster-name: << parameters.cluster-name >>
           install-kubectl: true
       - kubernetes/create-or-update-resource:
-          get-rollout-status: false
+          get-rollout-status: true
           resource-file-path: deployments/deployment.yaml
           resource-name: deployments/capstone-project
 
