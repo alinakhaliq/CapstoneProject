@@ -49,7 +49,7 @@ jobs:
             docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD 
             docker push project4alina/$IMAGE_NAME
 
-  create-small-cluster:
+  create-cluster:
     executor: aws-eks/python3
     parameters:
       cluster-name:
