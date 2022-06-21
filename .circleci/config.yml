@@ -94,7 +94,7 @@ jobs:
 workflows:
   deployment:
     jobs:
-#      - run-lint
+      - run-lint
 #      - docker-build
 #      - docker-push:
 #          requires:
@@ -103,13 +103,13 @@ workflows:
 #          cluster-name: capstone-project
 #          requires:
 #            - docker-push
-      - deploy-application:
-          cluster-name: capstone-project
-      - test-cluster:
-          cluster-name: capstone-project
-          requires:
+#      - deploy-application:
+#          cluster-name: capstone-project
+#      - test-cluster:
+#          cluster-name: capstone-project
+#          requires:
 #            - aws-eks/create-cluster
-            - deploy-application
+#            - deploy-application
 #      - aws-eks/delete-cluster:
 #          cluster-name: my-eks-demo
 #          requires:
