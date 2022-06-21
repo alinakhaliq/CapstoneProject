@@ -31,7 +31,8 @@ jobs:
       - run:
           name: Build Docker Image
           command: |
-            docker build --tag=capstone-project .
+            export IMAGE_NAME=capstone-project
+            docker build -t project4alina/$IMAGE_NAME .
 
   docker-push:
     docker:
