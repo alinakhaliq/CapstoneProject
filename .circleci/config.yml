@@ -19,7 +19,7 @@ jobs:
           command: |
             hadolint Dockerfile
 
-  build-docker-image:
+  docker-build:
     docker:
       - image: circleci/node:13.8.0
     steps:
@@ -32,7 +32,22 @@ jobs:
           name: Build Docker Image
           command: |
             export IMAGE_NAME=capstone-project
-            docker build -t project4alina/$IMAGE_NAME .
+            docker build -t capstone/$IMAGE_NAME .
+
+  docker-push:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - checkout
+      - setup_remote_docker:
+          version: 19.03.13
+      - run:
+          name: Push Docker Image to Docker Hub
+          command: |
+            export IMAGE_NAME=capstone-project
+            docker build -t capstone/$IMAGE_NAME .
+            docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD 
+            docker push capstone/$IMAGE_NAME:$TAG
 
   test-cluster:
     docker:
