@@ -11,4 +11,3 @@ I have:
 - Deployed the docker container application to this cluster
 - Tested the application
 - Delete the cluster following successful execution
-
